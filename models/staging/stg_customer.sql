@@ -5,4 +5,7 @@
 with base as (
     select * from {{ source('northwind' , 'customer')}}
 )
-select * from base
+select 
+    *,
+    current_timestamp() as ingestion_timestamp
+from base
